@@ -23,7 +23,7 @@ def verify_token(token: str):
     except jwt.InvalidTokenError:
         raise web.HTTPUnauthorized(reason="Invalid token")
 
-async def hello():
+async def hello(request):
     return web.Response(text="Hello, world")
 
 async def handle_http_request(request):
@@ -85,8 +85,8 @@ async def main():
         websocket_server
     )
 
-    print("HTTP server started on http://localhost:8080")
-    print("WebSocket server started on ws://localhost:8765")
+    print("HTTP server started on http://0.0.0.0:8080")
+    print("WebSocket server started on ws://0.0.0.0:8765")
 
     await asyncio.Future()
 
